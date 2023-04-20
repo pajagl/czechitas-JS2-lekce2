@@ -1,54 +1,51 @@
 // tady je místo pro náš program
 
-/*
-//c. zeptejte se uživatele na rodné číslo
-const cislo = prompt ("Zadej rodné číslo")
+const numbers = [15, 6, 70, 41, 33, 27, 8, 16, 98, 60, 56];
+const names = [
+  'Petr',
+  'Jana',
+  'Pavel',
+  'Zuzana',
+  'Eva',
+  'Adam',
+  'Onyx',
+  'Alex',
+];
+const persons = [
+  { name: 'Petr', age: 16, gender: 'male' },
+  { name: 'Jana', age: 8, gender: 'female' },
+  { name: 'Pavel', age: 34, gender: 'male' },
+  { name: 'Zuzana', age: 41, gender: 'female' },
+  { name: 'Eva', age: 22, gender: 'female' },
+  { name: 'Adam', age: 22, gender: 'male' },
+  { name: 'Onyx', age: 37, gender: 'intersex' },
+  { name: 'Alex', age: 29, gender: 'androgyne' },
+];
 
-//d. ověř, zda má rodné číslo 10 znaků
-if (cislo.length === 10) {
-    console.log ('Zadané rodné číslo má správně deset znaků.')
-} else (console.log ('Uživatel zadal rodné číslo neplatné délky.'))
+// a. Pomocí funkce forEach vypište do konzole postupně věk každé osoby z pole persons.
+persons.forEach(person => {
+    console.log(person.age)
+});
 
-//e. musí být celé číslo
-if (Number.isInteger(Number(cislo))) {
-    console.log('Rodné číslo je celé číslo.')
-} else (console.log('Rodné číslo obsahuje nepovolené znaky.'))
+// b. Pomocí metody forEach napište cyklus, který vypíše do konzole první písmeno z každého jména v poli names.
+persons.forEach(person => {
+    console.log(person.name.charAt(0))
+});
 
-//f. musí být dělitelné 11
-if (Number(cislo) % 11 === 0) {
-    console.log('Rodné číslo je dělitelné 11.')
-} else (console.log ('Rodné číslo není dělitelné 11.'))
-*/
+// c. Pomocí metody find najděte v poli persons osobu se jménem "Adam" a vypište ji do konzole.
+console.log(persons.find((persons) => persons.name === 'Adam'))
 
-// pokud jsou všechny podmínky splěnny >> 'Zadané rodné číslo je platné' else 'Uživatel zadal neplatné rodné číslo.' 
+// d. Vypište do konzole gender osoby se jménem "Onyx".
+console.log(persons.find((persons) => persons.name === 'Onyx').gender)
 
-// 2. Platnost jako funkce
+// e. Pomocí metody findIndex najděte v poli persons index osoby s věkem 22 a mužským pohlavím.
+console.log(persons.findIndex((person) => persons.age === 22 && persons.gender === 'male'))
 
-const rodnaCislaKOtestovani = [
-   '123',
-   'nepovím',
-   '7060201236',
-   '123456789123456789',
-   '9062185440',
-   '123č56q8y7',
- ];
+// f. Pomocí metody some zjistěte, jestli jsou v poli numbers nějaká čísla dělitelná 11.
+console.log(numbers.some((number) => number % 11 === 0))
 
-const checkBirthID = (item) => {
+// g. Pomocí metody some zjistěte, jestli jsou v poli persons nějaké osoby nebinárního pohlaví, tedy nejsou ani male, ani female.
+console.log(persons.some((persons) => persons.gender != 'male' && persons.gender != 'female'))
 
-    if (item.length !== 10) {
-        return `Invalid Item`;
-    }
-
-    if (!Number.isInteger(Number(item))) {
-        return `notANumber`;
-    }
-
-    if (Number(item) % 11 !== 0) {
-        return `failedChecksum`;
-    }
-
-    return `ok`;
-}
-
-console.log(checkBirthID('7060201236'));
-rodnaCislaKOtestovani.forEach(checkBirthID);
+// h. Pomocí metody every zjistěte, jestli v po
+console.log(persons.every((persons) => persons.age >= 18))
